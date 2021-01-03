@@ -23,7 +23,8 @@
 
 
 <!-- selectedHero 데이터가 있을 경우  -->
-<div *ngIf="selectedHero">
+<!-- 
+<div *ngIf="selectedHero"> 
     <h2>{{ selectedHero.name | uppercase }} Details</h2>
     <div><span>id: </span>{{ selectedHero.id }}</div>
     <div>
@@ -31,4 +32,7 @@
             name: <input type="text" [(ngModel)]="selectedHero.name" placeholder="name">
         </label>
     </div>
-</div>
+</div> 
+-->
+<!-- 위의 데이터를 하단으로 분산 -->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
