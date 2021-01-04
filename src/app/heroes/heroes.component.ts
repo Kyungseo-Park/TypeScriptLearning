@@ -11,20 +11,21 @@ import { MessageService } from '../message.service';
 })
 export class HeroesComponent implements OnInit {
 
+  // 선택한 데이터 출력하기 위해 초기화
   selectedHero: Hero | undefined;
   
+  // 히어로 목업을 불러오기 위해 초기화
   heroes: Hero[] | undefined;
 
-  constructor(private HeroService: HeroService, private messageService: MessageService) { }
+  constructor(private heroService: HeroService, private messageService: MessageService) { }
  
   ngOnInit(): void {
-    console.log(this.getHerose());
     this.getHerose();
   }
 
   onSelect(hero: Hero): void{
     this.selectedHero = hero;
-    this.messageService.add('HeroesCompoenent: Selected Hero id=${hero.id}');
+    this.messageService.add('HeroesComponent: Selected Hero id=${hero.id}');
   }
 
   // 기존코드 
@@ -33,8 +34,8 @@ export class HeroesComponent implements OnInit {
   // }
 
   // 옵저버 디자인 패턴 반영
-  getHerose(): void {
-    this.HeroService.getHeroes()
+  getHerose(): void{
+    this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
   }
 }
